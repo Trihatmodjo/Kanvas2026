@@ -17,12 +17,13 @@
         
         /* Style Ukuran Papan Tulis Baru (Lebih Besar & Responsif) */
         #writingPad {
-            border: 5px dashed #f59e0b;
-            border-radius: 24px;
-            background-color: #ffffff;
+            border: 6px dashed #d946ef;
+            border-radius: 30px;
+            background-color: #fffafb;
             cursor: crosshair;
             touch-action: none; 
-            box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: inset 0 6px 15px rgba(217, 70, 239, 0.08);
+            transition: all 0.3s ease;
         }
 
         /* Style Tambahan Khusus Game Ke-5 (Rekam Baca Pak Tri) */
@@ -335,38 +336,47 @@
             </div>
         </div>
 
-        <div id="gameHandwritingPage" class="hidden w-full max-w-4xl bg-white rounded-3xl shadow-2xl p-6 md:p-8 border-4 border-fuchsia-400 mx-auto my-auto text-center">
-            <div class="flex justify-between items-center border-b-2 border-dashed border-gray-100 pb-4 mb-4">
-                <button onclick="backToMainMenu()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-gray-700 font-bold rounded-xl text-xs transition">
-                    <i class="fa-solid fa-chevron-left mr-1"></i> Menu Utama
+        <!-- REVISI SKIN & SISTEM RESPONSIVE GAME 4 BY KANVAS -->
+        <div id="gameHandwritingPage" class="hidden w-full max-w-4xl bg-gradient-to-b from-purple-50 via-white to-fuchsia-100 rounded-3xl shadow-2xl p-5 md:p-8 border-4 border-fuchsia-400 mx-auto my-auto text-center">
+            <div class="flex justify-between items-center border-b-4 border-dashed border-fuchsia-200 pb-4 mb-4">
+                <button onclick="backToMainMenu()" class="px-4 py-2 bg-fuchsia-100 hover:bg-fuchsia-200 text-fuchsia-700 font-extrabold rounded-2xl text-xs transition shadow-sm transform active:scale-95">
+                    <i class="fa-solid fa-house-chimney mr-1"></i> Menu Utama
                 </button>
-                <h2 class="text-2xl font-black text-fuchsia-700 kids-title">Game 4: Ayo Menulis!</h2>
-                <div class="text-sm font-bold text-slate-500 bg-slate-100 px-3 py-1 rounded-full" id="g4Progress">Soal 1 / 5</div>
+                <h2 class="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-600 to-purple-600 kids-title tracking-wide">Game 4: Papan Tulis Ajaib! ??</h2>
+                <div class="text-sm font-black text-purple-700 bg-purple-100 px-4 py-1.5 rounded-full border-2 border-purple-300 shadow-sm" id="g4Progress">Soal 1 / 5</div>
             </div>
 
-            <div class="bg-gradient-to-r from-fuchsia-50 to-purple-50 text-fuchsia-900 border-2 border-fuchsia-200 rounded-2xl p-4 mb-4 max-w-2xl mx-auto">
-                <p id="g4-question" class="font-black text-xl md:text-2xl tracking-wide">Tuliskan kata: ...</p>
+            <div class="bg-gradient-to-r from-fuchsia-500 to-purple-600 text-white rounded-2xl p-4 mb-5 max-w-2xl mx-auto shadow-md transform hover:scale-[1.01] transition duration-300">
+                <p class="text-xs uppercase tracking-widest font-bold opacity-90 mb-1">?? TANTANGAN MENULIS ??</p>
+                <p id="g4-question" class="font-black text-2xl md:text-4xl tracking-wide kids-title drop-shadow">Tuliskan kata: ...</p>
             </div>
 
-            <div class="flex flex-col items-center justify-center mb-4 w-full">
-                <canvas id="writingPad" class="w-full max-w-[550px] h-[350px] shadow-lg"></canvas>
-                <button type="button" onclick="clearPad()" class="mt-3 bg-amber-500 hover:bg-amber-600 text-white text-xs font-extrabold py-2.5 px-5 rounded-xl shadow-md transition flex items-center gap-2">
-                    <i class="fa-solid fa-eraser"></i> Bersihkan Papan Tulis
+            <div class="flex flex-col items-center justify-center mb-5 w-full">
+                <!-- Wrapper Box Canvas untuk Efek Estetik Sekolah Modern -->
+                <div class="relative p-2 bg-white border-4 border-purple-300 rounded-[34px] shadow-xl w-full max-w-[550px]">
+                    <canvas id="writingPad" class="w-full h-[280px] md:h-[350px]"></canvas>
+                    <div class="absolute top-4 right-6 text-fuchsia-300 pointer-events-none select-none text-xl opacity-60"><i class="fa-solid fa-wand-magic-sparkles animate-pulse"></i> Gunakan Jarimu</div>
+                </div>
+                
+                <button type="button" onclick="clearPad()" class="mt-4 bg-gradient-to-r from-amber-400 to-orange-500 hover:opacity-95 text-white text-sm font-black py-3 px-6 rounded-2xl shadow-md transition transform active:translate-y-1 flex items-center gap-2 border-b-4 border-orange-700">
+                    <i class="fa-solid fa-eraser text-base"></i> Bersihkan Papan Tulis
                 </button>
             </div>
 
-            <div class="max-w-xs mx-auto mb-4">
-                <label class="block text-gray-500 text-xs font-bold mb-1 uppercase tracking-wide">Ketik ulang tulisanmu di bawah:</label>
-                <input type="text" id="g4TextVerify" class="w-full text-center px-4 py-2.5 border-2 border-slate-200 rounded-xl font-black tracking-widest text-lg uppercase focus:ring-2 focus:ring-fuchsia-400 focus:outline-none" placeholder="...">
+            <div class="max-w-md mx-auto mb-5 p-4 bg-white rounded-2xl shadow-inner border-2 border-purple-100">
+                <label class="block text-purple-600 text-xs font-black mb-2 uppercase tracking-wider flex items-center justify-center gap-1">
+                    <i class="fa-solid fa-keyboard"></i> Salin/Ketik Ulang Hasil Tulisanmu Di Sini:
+                </label>
+                <input type="text" id="g4TextVerify" class="w-full text-center px-4 py-3 bg-fuchsia-50/50 border-3 border-fuchsia-200 rounded-xl font-black tracking-widest text-xl text-purple-900 uppercase focus:ring-4 focus:ring-fuchsia-300 focus:border-fuchsia-400 focus:outline-none transition" placeholder="KLIK & KETIK...">
             </div>
 
-            <div id="g4FeedbackBox" class="hidden mb-4 p-4 rounded-xl flex flex-col items-center justify-center gap-1 border-4 max-w-md mx-auto">
-                <p id="g4FeedbackText" class="font-black text-base"></p>
+            <div id="g4FeedbackBox" class="hidden mb-5 p-4 rounded-2xl flex flex-col items-center justify-center gap-1 border-4 max-w-md mx-auto transform transition animate-bounce">
+                <p id="g4FeedbackText" class="font-black text-lg kids-title"></p>
             </div>
 
             <div class="flex justify-center">
-                <button type="button" id="submitG4Btn" onclick="checkG4Answer()" class="bg-gradient-to-r from-fuchsia-600 to-purple-600 text-white font-black text-xl py-4 px-12 rounded-2xl shadow-lg transition transform hover:-translate-y-1 active:translate-y-0">
-                    <i class="fa-solid fa-signature mr-2"></i> Periksa Tulisan Saya
+                <button type="button" id="submitG4Btn" onclick="checkG4Answer()" class="w-full max-w-sm bg-gradient-to-r from-emerald-400 to-teal-500 text-white font-black text-xl py-4 px-12 rounded-2xl shadow-xl hover:opacity-95 transition transform hover:-translate-y-1 active:translate-y-0 border-b-4 border-teal-700">
+                    <i class="fa-solid fa-square-check mr-2"></i> Periksa Jawaban <i class="fa-solid fa-paper-plane ml-1"></i>
                 </button>
             </div>
         </div>
@@ -386,7 +396,7 @@
 
                     <div class="box-instruksi">
                         <span class="simbol-isyarat" id="simbolPanduan"></span>
-                        <span id="isiPanduan">Klik tombol MERAH dan baca kalimat diatas</span>
+                        <span id="isiPanduan">Klik tombol MERAH and baca kalimat diatas</span>
                     </div>
 
                     <div class="Kamera-wrapper" id="boxKamera">
@@ -448,49 +458,49 @@
     <script>
         // 1. DATABASE MATERI HURUF (A - Z AMAN LENGKAP 100%)
         const materiMengucapkan = [
-            { id: 1, kata: "A", ejaan: "Buka mulut lebar: Aaaa... Aaaa...", emoji: "??", img: "https://images.unsplash.com/photo-1652080946581-16973c11824a?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400" },
-            { id: 2, kata: "B", ejaan: "Bibir dirapatkan: Beee... Beee...", emoji: "??", img: "https://images.unsplash.com/photo-1653956336207-0248ce26f710?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400" },
-            { id: 3, kata: "C", ejaan: "Gigi rapat bersentuhan: Ceee... Ceee...", emoji: "??", img: "https://images.unsplash.com/photo-1528028018421-7787621bd55d?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400" },
-            { id: 4, kata: "D", ejaan: "Lidah di belakang gigi atas: Deee...", emoji: "??", img: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=400" },
-            { id: 5, kata: "E", ejaan: "Senyum lebar: Eeee... Eeee...", emoji: "??", img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400" },
-            { id: 6, kata: "F", ejaan: "Gigi atas gigit bibir bawah: Efff...", emoji: "??", img: "https://images.unsplash.com/photo-1500462969109-f334694af8b6?w=400" },
-            { id: 7, kata: "G", ejaan: "Suara dari tenggorokan: Geee...", emoji: "??", img: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400" },
-            { id: 8, kata: "H", ejaan: "Hembuskan napas panjang: Haaa...", emoji: "??", img: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" },
-            { id: 9, kata: "I", ejaan: "Gigi dirapatkan senyum: Iiii... Iiii...", emoji: "??", img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400" },
-            { id: 10, kata: "J", ejaan: "Lidah menempel langit-langit: Jeee...", emoji: "??", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400" },
-            { id: 11, kata: "K", ejaan: "Batuk kecil dari tenggorokan: Kaaa...", emoji: "??", img: "https://images.unsplash.com/photo-1484820540004-14229fe36ca4?w=400" },
-            { id: 12, kata: "L", ejaan: "Ujung lidah naik ke atas: Llll...", emoji: "??", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400" },
-            { id: 13, kata: "M", ejaan: "Katupkan kedua bibir rapat: Mmmm...", emoji: "??", img: "https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?w=400" },
-            { id: 14, kata: "N", ejaan: "Lidah nempel langit depan: Nnnn...", emoji: "??", img: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=400" },
-            { id: 15, kata: "O", ejaan: "Mulut bulat penuh: Oooo... Oooo...", emoji: "??", img: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400" },
-            { id: 16, kata: "P", ejaan: "Tiup udara dari bibir rapat: Peee...", emoji: "??", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" },
-            { id: 17, kata: "Q", ejaan: "Bunyi k belakang tenggorokan: Qqq...", emoji: "??", img: "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=400" },
-            { id: 18, kata: "R", ejaan: "Getarkan ujung lidah atas: Rrrr...", emoji: "??", img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400" },
-            { id: 19, kata: "S", ejaan: "Desis udara lewat celah gigi: Sss...", emoji: "??", img: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400" },
-            { id: 20, kata: "T", ejaan: "Ketuk ujung lidah ke gigi: Teee...", emoji: "??", img: "https://images.unsplash.com/photo-1559251606-c623743a6d76?w=400" },
-            { id: 21, kata: "U", ejaan: "Bibir maju mencucu ke depan: Uuu...", emoji: "??", img: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=400" },
-            { id: 22, kata: "V", ejaan: "Bibir bawah nempel gigi atas: Vvv...", emoji: "??", img: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=400" },
-            { id: 23, kata: "W", ejaan: "Bentuk mulut u lalu buka: Www...", emoji: "??", img: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400" },
-            { id: 24, kata: "X", ejaan: "Kombinasi bunyi k dan s: Eks...", emoji: "??", img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400" },
-            { id: 25, kata: "Y", ejaan: "Tekan tengah lidah ke bawah: Yey...", emoji: "??", img: "https://images.unsplash.com/photo-1531685222403-f928502d2b60?w=400" },
-            { id: 26, kata: "Z", ejaan: "Desis bergetar rapat gigi: Zzz...", emoji: "??", img: "https://images.unsplash.com/photo-1501705388883-4ed8a543392c?w=400" }
+            { id: 1, kata: "A", ejaan: "Buka mulut lebar: Aaaa... Aaaa...", emoji: "🍏", img: "https://images.unsplash.com/photo-1652080946581-16973c11824a?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400" },
+            { id: 2, kata: "B", ejaan: "Bibir dirapatkan: Beee... Beee...", emoji: "🎈", img: "https://images.unsplash.com/photo-1653956336207-0248ce26f710?q=80&w=869&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400" },
+            { id: 3, kata: "C", ejaan: "Gigi rapat bersentuhan: Ceee... Ceee...", emoji: "🐱", img: "https://images.unsplash.com/photo-1528028018421-7787621bd55d?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400" },
+            { id: 4, kata: "D", ejaan: "Lidah di belakang gigi atas: Deee...", emoji: "🐕", img: "https://images.unsplash.com/photo-1533105079780-92b9be482077?w=400" },
+            { id: 5, kata: "E", ejaan: "Senyum lebar: Eeee... Eeee...", emoji: "🐘", img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400" },
+            { id: 6, kata: "F", ejaan: "Gigi atas gigit bibir bawah: Efff...", emoji: "🐟", img: "https://images.unsplash.com/photo-1500462969109-f334694af8b6?w=400" },
+            { id: 7, kata: "G", ejaan: "Suara dari tenggorokan: Geee...", emoji: "🦒", img: "https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400" },
+            { id: 8, kata: "H", ejaan: "Hembuskan napas panjang: Haaa...", emoji: "🛸", img: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" },
+            { id: 9, kata: "I", ejaan: "Gigi dirapatkan senyum: Iiii... Iiii...", emoji: "🦎", img: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400" },
+            { id: 10, kata: "J", ejaan: "Lidah menempel langit-langit: Jeee...", emoji: "🐆", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400" },
+            { id: 11, kata: "K", ejaan: "Batuk kecil dari tenggorokan: Kaaa...", emoji: "🛹", img: "https://images.unsplash.com/photo-1484820540004-14229fe36ca4?w=400" },
+            { id: 12, kata: "L", ejaan: "Ujung lidah naik ke atas: Llll...", emoji: "🦁", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400" },
+            { id: 13, kata: "M", ejaan: "Katupkan kedua bibir rapat: Mmmm...", emoji: "🐒", img: "https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?w=400" },
+            { id: 14, kata: "N", ejaan: "Lidah nempel langit depan: Nnnn...", emoji: "🍍", img: "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=400" },
+            { id: 15, kata: "O", ejaan: "Mulut bulat penuh: Oooo... Oooo...", emoji: "🍊", img: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400" },
+            { id: 16, kata: "P", ejaan: "Tiup udara dari bibir rapat: Peee...", emoji: "🍕", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400" },
+            { id: 17, kata: "Q", ejaan: "Bunyi k belakang tenggorokan: Qqq...", emoji: "👑", img: "https://images.unsplash.com/photo-1589652717521-10c0d092dea9?w=400" },
+            { id: 18, kata: "R", ejaan: "Getarkan ujung lidah atas: Rrrr...", emoji: "🤖", img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400" },
+            { id: 19, kata: "S", ejaan: "Desis udara lewat celah gigi: Sss...", emoji: "🍓", img: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?w=400" },
+            { id: 20, kata: "T", ejaan: "Ketuk ujung lidah ke gigi: Teee...", emoji: "🐢", img: "https://images.unsplash.com/photo-1559251606-c623743a6d76?w=400" },
+            { id: 21, kata: "U", ejaan: "Bibir maju mencucu ke depan: Uuu...", emoji: "🍇", img: "https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=400" },
+            { id: 22, kata: "V", ejaan: "Bibir bawah nempel gigi atas: Vvv...", emoji: "🎻", img: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=400" },
+            { id: 23, kata: "W", ejaan: "Bentuk mulut u lalu buka: Www...", emoji: "🍉", img: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400" },
+            { id: 24, kata: "X", ejaan: "Kombinasi bunyi k dan s: Eks...", emoji: "🕵️", img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400" },
+            { id: 25, kata: "Y", ejaan: "Tekan tengah lidah ke bawah: Yey...", emoji: "🍦", img: "https://images.unsplash.com/photo-1531685222403-f928502d2b60?w=400" },
+            { id: 26, kata: "Z", ejaan: "Desis bergetar rapat gigi: Zzz...", emoji: "🦓", img: "https://images.unsplash.com/photo-1501705388883-4ed8a543392c?w=400" }
         ];
 
-        // 2. REVISI TOTAL KONTEN 2: 10 SOAL MENGEJA KATA (GAMBAR ANTI-HILANG + SUKU KATA INTERAKTIF)
+        // 2. KONTEN 2: 10 SOAL MENGEJA KATA
         const materiMengejaKata = [
-            { id: 1, kata: "BOLA", sukuKata: ["BO", "LA"], ejaan: "BO - LA", emoji: "", img: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", warna: "border-amber-400" },
-            { id: 2, kata: "BUKU", sukuKata: ["BU", "KU"], ejaan: "BU - KU", emoji: "", img: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400", warna: "border-indigo-400" },
-            { id: 3, kata: "TOPI", sukuKata: ["TO", "PI"], ejaan: "TO - PI", emoji: "", img: "https://images.unsplash.com/photo-1560774358-d727658f457c?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", warna: "border-pink-400" },
-            { id: 4, kata: "MEJA", sukuKata: ["ME", "JA"], ejaan: "ME - JA", emoji: "", img: "https://images.unsplash.com/photo-1727398072763-52a2e13f3cfa?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", warna: "border-emerald-400" },
-            { id: 5, kata: "ROTI", sukuKata: ["RO", "TI"], ejaan: "RO - TI", emoji: "", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400", warna: "border-rose-400" },
-            { id: 6, kata: "SAYUR", sukuKata: ["SA", "YUR"], ejaan: "SA - YUR", emoji: "", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400", warna: "border-teal-400" },
-            { id: 7, kata: "MADU", sukuKata: ["MA", "DU"], ejaan: "MA - DU", emoji: "", img: "https://images.unsplash.com/photo-1587049352851-8d4e89133924?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", warna: "border-yellow-400" },
-            { id: 8, kata: "SUSU", sukuKata: ["SU", "SU"], ejaan: "SU - SU", emoji: "", img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400", warna: "border-blue-400" },
-            { id: 9, kata: "IKAN", sukuKata: ["I", "KAN"], ejaan: "I - KAN", emoji: "", img: "https://images.unsplash.com/photo-1535591273668-578e31182c4f?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", warna: "border-cyan-400" },
-            { id: 10, kata: "PULPEN", sukuKata: ["PUL", "PEN"], ejaan: "PUL - PEN", emoji: "", img: "https://images.unsplash.com/photo-1759729880000-bd54465328b7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", warna: "border-purple-400" }
+            { id: 1, kata: "BOLA", sukuKata: ["BO", "LA"], ejaan: "BO - LA", emoji: "⚽", img: "https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", warna: "border-amber-400" },
+            { id: 2, kata: "BUKU", sukuKata: ["BU", "KU"], ejaan: "BU - KU", emoji: "📚", img: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400", warna: "border-indigo-400" },
+            { id: 3, kata: "TOPI", sukuKata: ["TO", "PI"], ejaan: "TO - PI", emoji: "🎩", img: "https://images.unsplash.com/photo-1560774358-d727658f457c?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", warna: "border-pink-400" },
+            { id: 4, kata: "MEJA", sukuKata: ["ME", "JA"], ejaan: "ME - JA", emoji: "🪑", img: "https://images.unsplash.com/photo-1727398072763-52a2e13f3cfa?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", warna: "border-emerald-400" },
+            { id: 5, kata: "ROTI", sukuKata: ["RO", "TI"], ejaan: "RO - TI", emoji: "🍞", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400", warna: "border-rose-400" },
+            { id: 6, kata: "SAYUR", sukuKata: ["SA", "YUR"], ejaan: "SA - YUR", emoji: "🥦", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=400", warna: "border-teal-400" },
+            { id: 7, kata: "MADU", sukuKata: ["MA", "DU"], ejaan: "MA - DU", emoji: "🍯", img: "https://images.unsplash.com/photo-1587049352851-8d4e89133924?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", warna: "border-yellow-400" },
+            { id: 8, kata: "SUSU", sukuKata: ["SU", "SU"], ejaan: "SU - SU", emoji: "🥛", img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400", warna: "border-blue-400" },
+            { id: 9, kata: "IKAN", sukuKata: ["I", "KAN"], ejaan: "I - KAN", emoji: "🐟", img: "https://images.unsplash.com/photo-1535591273668-578e31182c4f?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", warna: "border-cyan-400" },
+            { id: 10, kata: "PULPEN", sukuKata: ["PUL", "PEN"], ejaan: "PUL - PEN", emoji: "🖊️", img: "https://images.unsplash.com/photo-1759729880000-bd54465328b7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", warna: "border-purple-400" }
         ];
 
-        // 3. REVISI TOTAL GAME 3: SEKARANG LENGKAP JADI 10 SOAL STABIL
+        // 3. GAME 3: SUSUN KATA KALIMAT
         const soalGame3 = [
             { foto: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400", kataAcak: ["MEMBACA", "SAYA", "BUKU"], kalimatBenar: "SAYA MEMBACA BUKU" },
             { foto: "https://images.unsplash.com/photo-1611812695436-b0da42923bd6?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400", kataAcak: ["MENENDANG", "BOLA", "BUDI"], kalimatBenar: "BUDI MENENDANG BOLA" },
@@ -551,21 +561,37 @@
             initHandwritingCanvas();
         });
 
+        // DATABASE INSTAN 7 SISWA & PIN CUSTOM KANVAS
+        const DAFTAR_SISWA = ["Talita", "Tuhfah", "Nafis", "Zahra", "Fitri", "Aura", "Naora", "Pakguru"];
+        const MASTER_PIN = "2233";
+
         function handleLogin() {
-    const userIn = document.getElementById('username').value.trim();
-    const pinIn = document.getElementById('password').value;
-    if(userIn === "" || pinIn === "") { alert("Isi nama dan PIN kelas!"); return; }
-    currentStudentName = userIn;
-    document.getElementById('menuStudentName').innerText = currentStudentName;
-    document.getElementById('loginPage').classList.add('hidden');
-    document.getElementById('mainMenuPage').classList.remove('hidden');
-}
+            const namaInput = document.getElementById("username").value.trim();
+            const pinInput = document.getElementById("password").value.trim();
+
+            if (namaInput === "") { alert("Silahkan Masukan Nama Kamu"); return; }
+
+            const siswaDitemukan = DAFTAR_SISWA.some(
+                siswa => siswa.toLowerCase() === namaInput.toLowerCase()
+            );
+
+            if (!siswaDitemukan) { alert("Maaf, nama kamu tidak terdaftar di kelas ini!"); return; }
+
+            if (pinInput === MASTER_PIN) {
+                currentStudentName = namaInput;
+                document.getElementById("menuStudentName").innerText = namaInput;
+                document.getElementById("loginPage").classList.add("hidden");
+                document.getElementById("mainMenuPage").classList.remove("hidden");
+            } else {
+                alert("Maaf..PIN salah! Coba cek lagi ya...");
+            }
+        }
 
         function logout() {
-            document.getElementById('username').value = '';
-            document.getElementById('password').value = '';
-            document.getElementById('mainMenuPage').classList.add('hidden');
-            document.getElementById('loginPage').classList.remove('hidden');
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+            document.getElementById("mainMenuPage").classList.add("hidden");
+            document.getElementById("loginPage").classList.remove("hidden");
         }
 
         function backToMainMenu() {
@@ -621,7 +647,6 @@
             document.getElementById('targetTextOverlay').innerText = item.kata;
             document.getElementById('targetEjaan').innerText = item.ejaan;
             
-            // Atur kesesuaian border container kartu utama biar selaras tema anak
             const mainCard = document.getElementById('mainCardContainer');
             mainCard.className = `bg-slate-50 rounded-3xl overflow-hidden border-4 ${item.warna ? item.warna : 'border-slate-100'} shadow-md mb-6 relative`;
 
@@ -637,7 +662,6 @@
                 document.getElementById('fallbackEmoji').innerText = item.emoji;
             }
 
-            // MODIFIKASI MENARIK: Tampilkan gelembung suku kata interaktif jika ini Konten 2
             const areaSukuKata = document.getElementById('specialSyllableArea');
             if(currentMode === 'mengeja' && item.sukuKata) {
                 areaSukuKata.innerHTML = '';
@@ -645,8 +669,7 @@
                 item.sukuKata.forEach(suku => {
                     const bubble = document.createElement('button');
                     bubble.className = "syllable-bubble px-6 py-3 rounded-2xl font-black text-2xl text-indigo-900 kids-title tracking-wider focus:outline-none";
-                    bubble.innerHTML = `??? ${suku}`;
-                    // Kasih efek ketukan simulasi visual ketika diklik anak tunarungu
+                    bubble.innerHTML = `👋 ${suku}`;
                     bubble.onclick = () => {
                         bubble.classList.add('scale-95', 'bg-indigo-100');
                         setTimeout(() => bubble.classList.remove('scale-95', 'bg-indigo-100'), 150);
@@ -664,14 +687,14 @@
         function backToDashboard() {
             document.getElementById('practicePage').classList.add('hidden');
             document.getElementById('dashboardPage').classList.remove('hidden');
-            if(sedangMendengar) { toggleListening(); }
+            if(sedangMendengar) { pengenalSuara.stop(); }
         }
 
-        // SPEECH RECOGNITION CORE ENGINE
         function initSpeechRecognition() {
-            window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if(window.SpeechRecognition) {
-                pengenalSuara = new window.SpeechRecognition();
+            // Perbaikan inisialisasi lintas-browser (Chrome, Edge, Safari mobile)
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (SpeechRecognition) {
+                pengenalSuara = new SpeechRecognition();
                 pengenalSuara.continuous = false;
                 pengenalSuara.lang = 'id-ID';
                 pengenalSuara.interimResults = false;
@@ -686,50 +709,130 @@
                 };
 
                 pengenalSuara.onresult = (e) => {
-                    const hasilTeks = e.results[0][0].transcript.toUpperCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
-                    prosesHasilSuaraSiswa(hasilTeks);
+                    if (e.results && e.results[0] && e.results[0][0]) {
+                        // Regex membersihkan karakter aneh agar pembacaan string valid
+                        const hasilTeks = e.results[0][0].transcript.toUpperCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").trim();
+                        prosesHasilSuaraSiswa(hasilTeks);
+                    }
                 };
 
                 pengenalSuara.onerror = (e) => {
-                    console.error(e);
-                    document.getElementById('systemStatus').innerText = "Suara kurang jelas / mikrofon error. Silakan coba lagi.";
-                    toggleListening();
+                    console.error("Speech error:", e.error);
+                    if (e.error === 'no-speech') {
+                        document.getElementById('systemStatus').innerText = "Suara tidak terdengar. Sentuh mikrofon lagi, yuk!";
+                    } else if (e.error === 'not-allowed') {
+                        document.getElementById('systemStatus').innerText = "Izin mikrofon diblokir browser. Mohon aktifkan izin mic.";
+                    } else {
+                        document.getElementById('systemStatus').innerText = "Koneksi mikrofon terputus. Klik ulang untuk mencoba.";
+                    }
+                    sedangMendengar = false;
+                    resetMicUI();
                 };
 
                 pengenalSuara.onend = () => {
                     sedangMendengar = false;
-                    document.getElementById('micIcon').className = "fa-solid fa-microphone text-white";
-                    document.getElementById('micPulse').classList.add('hidden');
-                    document.getElementById('btnLabel').innerText = "Tekan Tombol untuk Berbicara";
+                    resetMicUI();
                 };
                 speechRecognitionAvailable = true;
             } else {
-                document.getElementById('systemStatus').innerText = "Browser gadget ini tidak mendukung fitur Analisis Suara otomatis.";
+                document.getElementById('systemStatus').innerText = "Browser tidak mendukung Web Speech API.";
             }
+        }
+
+        function resetMicUI() {
+            document.getElementById('micIcon').className = "fa-solid fa-microphone text-white";
+            document.getElementById('micPulse').classList.add('hidden');
+            document.getElementById('btnLabel').innerText = "Tekan Tombol untuk Berbicara";
         }
 
         function toggleListening() {
-            if(!speechRecognitionAvailable) { alert("Analisis suara tidak disupport gadget ini."); return; }
-            if(sedangMendengar) { pengenalSuara.stop(); } 
-            else {
+            if (!speechRecognitionAvailable) { 
+                // Fallback jika SpeechRecognition tidak diizinkan oleh sistem perangkat keras browser
+                let simulasiKata = prompt("Masukkan suara kamu secara manual (Metode Cadangan):", itemAktif.kata);
+                if (simulasiKata) { prosesHasilSuaraSiswa(simulasiKata.toUpperCase().trim()); }
+                return; 
+            }
+            if (sedangMendengar) { 
+                try { pengenalSuara.stop(); } catch(e){} 
+            } else {
                 document.getElementById('resultContainer').classList.add('hidden');
                 document.getElementById('feedbackBox').classList.add('hidden');
-                pengenalSuara.start();
+                try { 
+                    pengenalSuara.start(); 
+                } catch(e) { 
+                    initSpeechRecognition(); 
+                    try { pengenalSuara.start(); } catch(err) { console.log(err); }
+                }
             }
         }
 
+        // PERBAIKAN LOGIKA PENCOCOKAN ANALISIS KATA GAME 1 & GAME 2
         function prosesHasilSuaraSiswa(teksMasuk) {
             document.getElementById('resultText').innerText = teksMasuk;
             document.getElementById('resultContainer').classList.remove('hidden');
             
-            const target = itemAktif.kata.toUpperCase();
+            const target = itemAktif.kata.toUpperCase().trim();
             let skorHasil = 0;
-            if(teksMasuk === target || teksMasuk.includes(target)) { skorHasil = 100; } 
-            else {
-                let kecocokan = 0;
-                for(let i=0; i<target.length; i++) { if(teksMasuk.includes(target[i])) kecocokan++; }
-                skorHasil = Math.floor((kecocokan / target.length) * 80);
-                if(skorHasil < 40) skorHasil = 50; 
+
+            if (currentMode === 'mengucapkan') {
+                // Kamus toleransi konprehensif untuk penangkapan fonetik suara alfabet tunggal di Indonesia
+                const fonetikKamus = {
+                    "A": ["A", "AA", "AH", "APAKAH", "HA"], 
+                    "B": ["BÉ", "BI", "BEE", "BE", "B", "BABI"], 
+                    "C": ["CÉ", "SE", "CEE", "CE", "C", "SÉ"],
+                    "D": ["DÉ", "DI", "DEE", "DE", "D"], 
+                    "E": ["É", "EH", "E"], 
+                    "F": ["ÉF", "EFF", "EF", "F"], 
+                    "G": ["GÉ", "JI", "GE", "G"], 
+                    "H": ["HA", "HAA", "H"], 
+                    "I": ["AI", "I", "II"], 
+                    "J": ["JÉ", "JE", "J"], 
+                    "K": ["KA", "KAA", "K", "KAH"], 
+                    "L": ["ÉL", "ELL", "EL", "L"],
+                    "M": ["ÉM", "EMM", "EM", "M"], 
+                    "N": ["ÉN", "ENN", "EN", "N"], 
+                    "O": ["OH", "OO", "O"], 
+                    "P": ["PÉ", "PI", "PE", "P"], 
+                    "Q": ["Q", "KI", "KJU", "KU"], 
+                    "R": ["ÉR", "ERR", "ER", "R"],
+                    "S": ["ÉS", "ESS", "ES", "S", "ESCE"], 
+                    "T": ["TÉ", "TI", "TE", "T"], 
+                    "U": ["UH", "UU", "U"], 
+                    "V": ["VÉ", "VI", "VE", "V"], 
+                    "W": ["WAI", "YÉ", "WE", "W", "DABELYU"], 
+                    "X": ["ÉKS", "EKS", "X"],
+                    "Y": ["WAI", "YÉ", "YE", "Y"], 
+                    "Z": ["ZÉ", "ZET", "ZE", "Z"]
+                };
+
+                let cocokFonetik = false;
+                if (fonetikKamus[target]) {
+                    cocokFonetik = fonetikKamus[target].some(fon => teksMasuk === fon || teksMasuk.includes(fon));
+                }
+
+                if (teksMasuk === target || teksMasuk.includes(target) || cocokFonetik) {
+                    skorHasil = 100;
+                } else {
+                    skorHasil = teksMasuk.length > 0 ? 80 : 60; 
+                }
+            } else if (currentMode === 'mengeja') {
+                // Game 2: Deteksi kata utuh maupun potongan suku kata yang terpecah saat dibaca anak
+                let hitungCocok = 0;
+                if (teksMasuk === target || teksMasuk.includes(target) || target.includes(teksMasuk)) {
+                    skorHasil = 100;
+                } else {
+                    if (itemAktif.sukuKata) {
+                        itemAktif.sukuKata.forEach(suku => {
+                            if (teksMasuk.includes(suku.toUpperCase())) hitungCocok++;
+                        });
+                    }
+                    if (hitungCocok > 0) {
+                        skorHasil = Math.floor((hitungCocok / itemAktif.sukuKata.length) * 100);
+                        if(skorHasil < 75) skorHasil = 75; 
+                    } else {
+                        skorHasil = 70; 
+                    }
+                }
             }
 
             totalScore += skorHasil;
@@ -745,15 +848,16 @@
             fbBox.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-400', 'text-emerald-800', 'bg-amber-50', 'border-amber-400', 'text-amber-800');
             fbScore.innerText = skor;
 
-            if(skor >= 85) {
+            if(skor >= 75) {
                 fbBox.classList.add('bg-emerald-50', 'border-emerald-400', 'text-emerald-800');
-                fbIcon.innerText = "??";
+                fbIcon.innerText = "🌟";
                 fbMsg.innerText = "HEBAT! Artikulasi bicaramu sangat jelas!";
             } else {
                 fbBox.classList.add('bg-amber-50', 'border-amber-400', 'text-amber-800');
-                fbIcon.innerText = "??";
+                fbIcon.innerText = "👍";
                 fbMsg.innerText = "Bagus! Terus berlatih agar artikulasi lebih sempurna!";
             }
+            fbBox.classList.remove('hidden');
         }
 
         function resetFeedbackInterface() {
@@ -762,9 +866,6 @@
             document.getElementById('systemStatus').innerText = "Klik tombol mikrofon merah di bawah untuk mulai merekam suara";
         }
 
-        // ==========================================
-        // SISTEM GAME 3: SUSUN KATA KALIMAT (10 SOAL STABIL BERURUTAN)
-        // ==========================================
         function startGameKataAcak() {
             document.getElementById('mainMenuPage').classList.add('hidden');
             document.getElementById('gamePage').classList.remove('hidden');
@@ -800,7 +901,6 @@
 
             const dataSoal = soalGame3[indeksG3];
 
-            // Render Gudang Kata Pilihan
             dataSoal.kataAcak.forEach((kata) => {
                 if (!kataTerpilihG3.includes(kata)) {
                     const btnKata = document.createElement('button');
@@ -814,7 +914,6 @@
                 }
             });
 
-            // Render Kata di Papan Jawaban sesuai klik anak
             kataTerpilihG3.forEach((kata, index) => {
                 const badgeJawaban = document.createElement('div');
                 badgeJawaban.className = "px-5 py-3 bg-indigo-600 text-white border-2 border-indigo-700 rounded-2xl font-extrabold text-lg flex items-center gap-2 shadow";
@@ -853,14 +952,14 @@
             if(jawabanSiswa === kunciJawaban) {
                 skorG3 += 100;
                 fbBox.classList.add('bg-emerald-50', 'border-emerald-400', 'text-emerald-800');
-                fbIcon.innerText = "";
+                fbIcon.innerText = "🎉";
                 fbMsg.innerText = "Luar Biasa! Susunan kalimatmu sempurna!";
                 fbScore.innerText = 100;
                 document.getElementById('checkG3Btn').classList.add('hidden');
                 document.getElementById('nextGameBtn').classList.remove('hidden');
             } else {
                 fbBox.classList.add('bg-red-50', 'border-red-400', 'text-red-800');
-                fbIcon.innerText = "";
+                fbIcon.innerText = "❌";
                 fbMsg.innerText = "Kurang Tepat! Ayo coba susun kembali urutannya.";
                 fbScore.innerText = 0;
             }
@@ -872,14 +971,13 @@
             tampilkanSoalG3();
         }
 
-        // GAME 4 LOGIC (HANDWRITING PAD)
         function startGameHandwriting() {
             document.getElementById('mainMenuPage').classList.add('hidden');
             document.getElementById('gameHandwritingPage').classList.remove('hidden');
             indeksG4 = 0;
             skorG4 = 0;
             tampilkanSoalG4();
-            resizeWritingCanvas();
+            setTimeout(resizeWritingCanvas, 50);
         }
 
         function initHandwritingCanvas() {
@@ -891,45 +989,73 @@
             canvas.addEventListener('mouseup', stopDrawing);
             canvas.addEventListener('mouseout', stopDrawing);
 
-            canvas.addEventListener('touchstart', (e) => { const t = e.touches[0]; setupDrawEvent(t, startDrawing); });
-            canvas.addEventListener('touchmove', (e) => { const t = e.touches[0]; setupDrawEvent(t, draw); e.preventDefault(); });
-            canvas.addEventListener('touchend', stopDrawing);
-        }
+            canvas.addEventListener('touchstart', function(e) {
+                if (e.touches.length === 1) {
+                    const touch = e.touches[0];
+                    startDrawing(touch);
+                }
+            }, { passive: false });
 
-        function setupDrawEvent(touchObj, callbackAction) {
-            const mouseEvent = new MouseEvent(touchObj.type === 'touchstart' ? 'mousedown' : 'mousemove', {
-                clientX: touchObj.clientX,
-                clientY: touchObj.clientY
-            });
-            callbackAction(mouseEvent);
+            canvas.addEventListener('touchmove', function(e) {
+                if (e.touches.length === 1) {
+                    const touch = e.touches[0];
+                    draw(touch);
+                    e.preventDefault(); 
+                }
+            }, { passive: false });
+
+            canvas.addEventListener('touchend', stopDrawing);
         }
 
         function resizeWritingCanvas() {
             const canvas = document.getElementById('writingPad');
-            canvas.width = canvas.parentElement.clientWidth > 550 ? 550 : canvas.parentElement.clientWidth;
-            canvas.height = 350;
+            const parentWidth = canvas.parentElement.clientWidth;
+            canvas.width = parentWidth - 16; 
+            canvas.height = window.innerWidth < 640 ? 260 : 350;
             clearPad();
+        }
+
+        function dapatkanPosisiKoordinat(e) {
+            const canvas = document.getElementById('writingPad');
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.clientX || e.pageX - window.scrollX;
+            const clientY = e.clientY || e.pageY - window.scrollY;
+            const x = (clientX - rect.left) * (canvas.width / rect.width);
+            const y = (clientY - rect.top) * (canvas.height / rect.height);
+            return { x, y };
         }
 
         function startDrawing(e) {
             isDrawing = true;
             canvasCtx.beginPath();
-            const rect = e.target.getBoundingClientRect();
-            canvasCtx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
-            canvasCtx.lineWidth = 5;
+            const pos = dapatkanPosisiKoordinat(e);
+            canvasCtx.moveTo(pos.x, pos.y);
+            canvasCtx.lineWidth = window.innerWidth < 640 ? 5 : 7;
             canvasCtx.lineCap = 'round';
-            canvasCtx.strokeStyle = '#4b5563';
+            canvasCtx.lineJoin = 'round';
+            canvasCtx.strokeStyle = '#c026d3'; 
         }
 
         function draw(e) {
             if(!isDrawing) return;
-            const rect = e.target.getBoundingClientRect();
-            canvasCtx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+            const pos = dapatkanPosisiKoordinat(e);
+            canvasCtx.lineTo(pos.x, pos.y);
             canvasCtx.stroke();
         }
 
-        function stopDrawing() { isDrawing = false; canvasCtx.closePath(); }
-        function clearPad() { if(canvasCtx) canvasCtx.clearRect(0, 0, 550, 350); }
+        function stopDrawing() { 
+            if(isDrawing) {
+                canvasCtx.closePath();
+                isDrawing = false; 
+            }
+        }
+        
+        function clearPad() { 
+            if(canvasCtx) {
+                const canvas = document.getElementById('writingPad');
+                canvasCtx.clearRect(0, 0, canvas.width, canvas.height); 
+            }
+        }
 
         function tampilkanSoalG4() {
             if(indeksG4 >= soalGame4.length) {
@@ -955,10 +1081,10 @@
             if(verifikasiTeks === targetKata) {
                 skorG4 += 100;
                 fbBox.classList.add('bg-emerald-50', 'border-emerald-400', 'text-emerald-800');
-                fbText.innerText = "? Hebat! Tulisanmu dikonfirmasi benar!";
+                fbText.innerHTML = "✨ Hebat! Tulisanmu dikonfirmasi BENAR!";
             } else {
                 fbBox.classList.add('bg-red-50', 'border-red-400', 'text-red-800');
-                fbText.innerText = "? Konfirmasi salah! Sesuaikan tulisan dengan perintah soal.";
+                fbText.innerHTML = "❌ Konfirmasi salah! Sesuaikan tulisan dengan perintah soal.";
             }
             fbBox.classList.remove('hidden');
 
@@ -968,7 +1094,6 @@
             }, 2000);
         }
 
-        // REPORT PAGE SYSTEM
         function bukaHalamanRaporAkhir() {
             document.getElementById('dashboardPage').classList.add('hidden');
             document.getElementById('practicePage').classList.add('hidden');
@@ -978,9 +1103,9 @@
             
             document.getElementById('finalScoreDisplay').innerText = totalScore;
             const statusLabel = document.getElementById('finalScoreStatus');
-            if(totalScore >= 300) { statusLabel.innerText = "?? Bintang Sempurna! Kamu Hebat Sekali! ??"; statusLabel.className="text-sm font-bold text-emerald-600 mt-2"; }
-            else if(totalScore >= 150) { statusLabel.innerText = "?? Bagus Sekali! Tingkatkan Terus Prestasimu!"; statusLabel.className="text-sm font-bold text-indigo-600 mt-2"; }
-            else { statusLabel.innerText = "?? Tetap Semangat Berlatih Setiap Hari ya!"; statusLabel.className="text-sm font-bold text-amber-600 mt-2"; }
+            if(totalScore >= 300) { statusLabel.innerText = "🌟 Bintang Sempurna! Kamu Hebat Sekali! 🌟"; statusLabel.className="text-sm font-bold text-emerald-600 mt-2"; }
+            else if(totalScore >= 150) { statusLabel.innerText = "✨ Bagus Sekali! Tingkatkan Terus Prestasimu!"; statusLabel.className="text-sm font-bold text-indigo-600 mt-2"; }
+            else { statusLabel.innerText = "💪 Tetap Semangat Berlatih Setiap Hari ya!"; statusLabel.className="text-sm font-bold text-amber-600 mt-2"; }
 
             document.getElementById('reportPage').classList.remove('hidden');
         }
@@ -1071,8 +1196,8 @@
                 
                 canvasWatermarkCtx.clearRect(0, 0, canvasVirtual.width, canvasVirtual.height);
                 canvasWatermarkCtx.save();
-                canvasWatermarkCtx.translate(canvasVirtual.width, 0);
-                canvasWatermarkCtx.scale(-1, 1);
+                canvasVirtual.getContext('2d').translate(canvasVirtual.width, 0);
+                canvasVirtual.getContext('2d').scale(-1, 1);
                 canvasWatermarkCtx.drawImage(videoElement, 0, 0, canvasVirtual.width, canvasVirtual.height);
                 canvasWatermarkCtx.restore();
 
@@ -1155,60 +1280,6 @@
             const urlWA = `https://api.whatsapp.com/send?phone=${noPakTri}&text=${encodeURIComponent(isiPesan)}`;
             window.open(urlWA, '_blank');
         }
-// ========================================================
-    // DATABASE INSTAN 7 SISWA & PIN CUSTOM KANVAS
-    // ========================================================
-    const DAFTAR_SISWA = [
-        "Talita",
-        "Tuhfah",
-        "Nafis",
-        "Zahra",
-        "Fitri",
-        "Aura",
-        "Naora",
-        "Pakguru",
-    ];
-
-    const MASTER_PIN = "2233"; // PIN sesuai request kamu, bro!
-
-    function handleLogin() {
-        const namaInput = document.getElementById("username").value.trim();
-        const pinInput = document.getElementById("password").value.trim();
-
-        if (namaInput === "") {
-            alert("Silahkan Masukan Nama Kamu");
-            return;
-        }
-
-        // Cek nama siswa (tidak sensitif huruf besar/kecil, ketik "talita" atau "Talita" tetep lolos)
-        const siswaDitemukan = DAFTAR_SISWA.some(
-            siswa => siswa.toLowerCase() === namaInput.toLowerCase()
-        );
-
-        if (!siswaDitemukan) {
-            alert("Maaf, nama kamu tidak terdaftar di kelas ini!");
-            return; 
-        }
-
-        // Cek PIN
-        if (pinInput === MASTER_PIN) {
-            // Pasang nama siswa ke halaman utama
-            document.getElementById("menuStudentName").innerText = namaInput;
-
-            // Masuk ke Menu Utama
-            document.getElementById("loginPage").classList.add("hidden");
-            document.getElementById("mainMenuPage").classList.remove("hidden");
-        } else {
-            alert("Maaf..PIN salah! Coba cek lagi ya...");
-        }
-    }
-
-    function logout() {
-        document.getElementById("username").value = "";
-        document.getElementById("password").value = "";
-        document.getElementById("mainMenuPage").classList.add("hidden");
-        document.getElementById("loginPage").classList.remove("hidden");
-    }
     </script>
 </body>
 </html>
